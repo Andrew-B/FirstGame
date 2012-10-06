@@ -43,16 +43,7 @@ namespace Tutorial
         {
             System.Console.WriteLine("Current Frame is:" + currentFrame);
             System.Console.WriteLine(currentFrame + " of " + totalFrames);
-            if (loop == false)
-                currentFrame++;
-            else
-                currentFrame--;
-            if (currentFrame == totalFrames - 1)
-            {
-                loop = true;
-            }
-            if (currentFrame == 0)
-                loop = false;
+            
         }
         else
             if (!is_moving)

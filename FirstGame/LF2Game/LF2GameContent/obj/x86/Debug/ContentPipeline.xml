@@ -19,6 +19,15 @@
       <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\davis_0.xnb</Output>
       <Time>2012-10-06T13:59:24.9784076+10:00</Time>
     </Item>
+    <Item>
+      <Source>Score.spritefont</Source>
+      <Name>Score</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Score.xnb</Output>
+      <Time>2012-10-06T14:51:40.7497635+10:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

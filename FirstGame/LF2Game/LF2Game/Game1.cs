@@ -14,10 +14,14 @@ namespace LF2Game
     /// <summary>
     /// This is the main type for your game
     /// </summary>
+    /// 
+    
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private Texture2D background;
+        private Texture2D bit;
 
         public Game1()
         {
@@ -46,6 +50,8 @@ namespace LF2Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            background = Content.Load<Texture2D>("julian_f");
+            bit = Content.Load<Texture2D>("davis_0");
 
             // TODO: use this.Content to load your game content here
         }
@@ -84,6 +90,11 @@ namespace LF2Game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            
+            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
+            spriteBatch.Draw(bit, new Rectangle(300, 200, 200, 200), Color.White);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

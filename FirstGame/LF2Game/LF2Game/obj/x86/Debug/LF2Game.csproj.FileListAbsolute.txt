@@ -1,0 +1,8 @@
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\julian_f.xnb
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\davis_0.xnb
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\LF2Game.exe
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\LF2Game.pdb
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\obj\x86\Debug\LF2Game.exe
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\obj\x86\Debug\LF2Game.pdb

@@ -21,9 +21,9 @@ namespace LF2Game
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private Texture2D background;
-        private Texture2D bit;
         private SpriteFont font;
         private int score = 0;
+        private LFSprite Player1;
 
         public Game1()
         {
@@ -53,7 +53,8 @@ namespace LF2Game
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = Content.Load<Texture2D>("julian_f");
-            bit = Content.Load<Texture2D>("davis_0");
+            Texture2D texture = Content.Load<Texture2D>("Davis2");
+            Player1 = new LFSprite(texture, 1, 8);
             font = Content.Load<SpriteFont>("Score");
 
             // TODO: use this.Content to load your game content here
@@ -75,6 +76,7 @@ namespace LF2Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            Player1.Update();
             score += 1;
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -95,11 +97,10 @@ namespace LF2Game
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
-            spriteBatch.Draw(bit, new Rectangle(300, 200, 200, 200), Color.White);
             spriteBatch.DrawString(font, "Score:" + score, new Vector2(100, 100), Color.Red);
             spriteBatch.End();
+            Player1.Draw(spriteBatch, new Vector2(400, 200));
 
             base.Draw(gameTime);
         }

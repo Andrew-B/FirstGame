@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Tutorial
+namespace LF2Game
 {
    public class LFSprite
     {
@@ -18,7 +18,9 @@ namespace Tutorial
         private int currentFrame;
         private int totalFrames;
         private int timer = 0;
-        private Boolean loop = false;
+        private int [] frames = new int[] {0,1,2,3,4,5,6,7,8};
+        private Boolean up { get; set; }
+        
 
 
     public LFSprite(Texture2D texture, int rows, int columns)
@@ -39,16 +41,13 @@ namespace Tutorial
     {
         
         timer++;
-        if (timer % 8 == 0 && is_moving)
+        if (timer % 8 == 0)
         {
-            System.Console.WriteLine("Current Frame is:" + currentFrame);
-            System.Console.WriteLine(currentFrame + " of " + totalFrames);
-            
-        }
-        else
-            if (!is_moving)
+            currentFrame++;
+            if (currentFrame == totalFrames)
                 currentFrame = 0;
-            return;
+           
+        }
     }
 
     public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -58,7 +57,7 @@ namespace Tutorial
         int row = (int)((float)currentFrame / (float)Columns);
         int column = currentFrame % Columns;
         sourceRectangle = new Rectangle(width * column, height * row, width, height);
-        destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+        destinationRectangle = new Rectangle((int)location.X + timer, (int)location.Y, width, height);
         spriteBatch.Begin();
         spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         spriteBatch.End();

@@ -28,6 +28,24 @@
       <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Score.xnb</Output>
       <Time>2012-10-06T14:51:40.7497635+10:00</Time>
     </Item>
+    <Item>
+      <Source>Davis.png</Source>
+      <Name>Davis</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis.xnb</Output>
+      <Time>2012-10-06T21:40:53.2800879+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Davis2.png</Source>
+      <Name>Davis2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis2.xnb</Output>
+      <Time>2012-10-06T21:48:10.4850946+10:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

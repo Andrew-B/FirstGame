@@ -61,7 +61,7 @@ namespace LF2Game
             background = Content.Load<Texture2D>("g1");
             background_top = Content.Load<Texture2D>("back1");
             background_bottom = Content.Load<Texture2D>("w1");
-            Texture2D texture = Content.Load<Texture2D>("Davis3");
+            Texture2D texture = Content.Load<Texture2D>("Davis4");
             Player1 = new LFSprite(texture, 4, 8);
             font = Content.Load<SpriteFont>("Score");
 

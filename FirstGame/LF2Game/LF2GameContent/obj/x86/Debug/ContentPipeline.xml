@@ -64,6 +64,15 @@
       <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\w1.xnb</Output>
       <Time>2012-10-08T15:20:03.8800714+10:00</Time>
     </Item>
+    <Item>
+      <Source>Davis4.png</Source>
+      <Name>Davis4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis4.xnb</Output>
+      <Time>2012-10-08T18:36:46.2301272+10:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

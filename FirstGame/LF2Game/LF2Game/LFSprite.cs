@@ -59,7 +59,6 @@ namespace LF2Game
                     {
 
                         currentFrame++;
-                        System.Console.WriteLine("THe curent frame is:" + currentFrame + " and the facing is: " + facing.ToString());
                         if (currentFrame == totalFrames)
                             currentFrame = 0;
                     }
@@ -76,7 +75,6 @@ namespace LF2Game
                     {
 
                         currentFrame++;
-                        System.Console.WriteLine("THe curent frame is:" + currentFrame + " and the facing is: " + facing.ToString());
                         if (currentFrame == totalFrames)
                             currentFrame = 0;
                     }
@@ -113,7 +111,6 @@ namespace LF2Game
                         {
 
                             currentFrame++;
-                            System.Console.WriteLine("THe curent frame is:" + currentFrame + " and the facing is: " + facing.ToString());
                             if (currentFrame == totalFrames)
                                 currentFrame = 0;
                         }

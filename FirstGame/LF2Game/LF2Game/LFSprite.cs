@@ -18,8 +18,15 @@ namespace LF2Game
         private int currentFrame;
         private int totalFrames;
         private int timer = 0;
+        private int row = 0;
+        //private int column = 0;
         private int [] frames = new int[] {0,1,2,3,4,5,6,7,8};
         private Boolean up { get; set; }
+        public enum PlayerFace { right, left };
+        public PlayerFace facing = PlayerFace.right;
+        public PlayerFace oldState = PlayerFace.right;
+        public enum PlayerState { walk, run, jump, hurt, attack, item, stand }
+        public PlayerState current_state = PlayerState.stand;
         
 
 
@@ -29,23 +36,67 @@ namespace LF2Game
         Rows = rows;
         Columns = columns;
         currentFrame = 0;
-        totalFrames = Rows * Columns;
+        totalFrames = 8;
         int width = Texture.Width / Columns;
         int height = Texture.Height / Rows;
         int row = (int)((float)currentFrame / (float)Columns);
         int column = currentFrame % Columns;
         System.Console.WriteLine(texture.Width);
+        System.Console.WriteLine(texture.Height);
     }
 
     public void Update()
     {
         
+        
         timer++;
         if (timer % 8 == 0)
         {
-            currentFrame++;
-            if (currentFrame == totalFrames)
-                currentFrame = 0;
+            if (current_state == PlayerState.stand)
+            {
+                if (facing == PlayerFace.right)
+                    currentFrame = 0;
+                else
+                    currentFrame = 7;
+            }
+            else
+            {
+                if (facing == PlayerFace.right)
+                {
+                    row = 0;
+                    if (oldState == PlayerFace.right)
+                    {
+
+                        currentFrame++;
+                        System.Console.WriteLine("THe curent frame is:" + currentFrame + " and the facing is: " + facing.ToString());
+                        if (currentFrame == totalFrames)
+                            currentFrame = 0;
+                    }
+                    else
+                    {
+                        currentFrame = 1;
+                    }
+                    oldState = PlayerFace.right;
+                }
+                else if (facing == PlayerFace.left)
+                {
+                    row = 1;
+                    if (oldState == PlayerFace.left)
+                    {
+
+                        currentFrame++;
+                        if (currentFrame == totalFrames)
+                            currentFrame = 0;
+                    }
+                    else
+                    {
+                        currentFrame = 1;
+                    }
+                    oldState = PlayerFace.left;
+
+                }
+            }
+
            
         }
     }
@@ -54,10 +105,9 @@ namespace LF2Game
     {
         int width = Texture.Width / Columns;
         int height = Texture.Height / Rows;
-        int row = (int)((float)currentFrame / (float)Columns);
-        int column = currentFrame % Columns;
+        int column = currentFrame;
         sourceRectangle = new Rectangle(width * column, height * row, width, height);
-        destinationRectangle = new Rectangle((int)location.X + timer, (int)location.Y, width, height);
+        destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
         spriteBatch.Begin();
         spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         spriteBatch.End();

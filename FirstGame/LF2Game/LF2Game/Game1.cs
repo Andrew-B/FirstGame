@@ -24,11 +24,14 @@ namespace LF2Game
         private SpriteFont font;
         private int score = 0;
         private LFSprite Player1;
+        
+        
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsFixedTimeStep = false;
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace LF2Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = Content.Load<Texture2D>("julian_f");
             Texture2D texture = Content.Load<Texture2D>("Davis2");
-            Player1 = new LFSprite(texture, 1, 8);
+            Player1 = new LFSprite(texture, 2, 8);
             font = Content.Load<SpriteFont>("Score");
 
             // TODO: use this.Content to load your game content here
@@ -76,7 +79,26 @@ namespace LF2Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            //Get Control Input
+
+            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+            if (gamePadState.DPad.Left == ButtonState.Pressed)
+            {
+                Player1.current_state = LFSprite.PlayerState.walk;
+                Player1.facing = LFSprite.PlayerFace.left;
+            }
+            else if (gamePadState.DPad.Right == ButtonState.Pressed)
+            {
+                Player1.current_state = LFSprite.PlayerState.walk;
+                Player1.facing = LFSprite.PlayerFace.right;
+            }
+            else
+            {
+                Player1.current_state = LFSprite.PlayerState.stand;
+            }
+            
             Player1.Update();
+            
             score += 1;
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)

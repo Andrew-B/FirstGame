@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis.xnb</Output>
-      <Time>2012-10-06T21:40:53.2800879+10:00</Time>
+      <Time>2012-10-08T12:21:59.2746472+10:00</Time>
     </Item>
     <Item>
       <Source>Davis2.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis2.xnb</Output>
-      <Time>2012-10-06T21:48:10.4850946+10:00</Time>
+      <Time>2012-10-08T12:39:59.8344517+10:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

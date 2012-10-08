@@ -63,15 +63,29 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Davis.png">
-      <Name>Davis</Name>
+    <Compile Include="Davis3.png">
+      <Name>Davis3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Davis2.png">
-      <Name>Davis2</Name>
+    <Compile Include="g1.bmp">
+      <Name>g1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="back1.bmp">
+      <Name>back1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="w1.bmp">
+      <Name>w1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

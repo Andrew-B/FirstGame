@@ -27,6 +27,7 @@ namespace LF2Game
         public PlayerFace oldState = PlayerFace.right;
         public enum PlayerState { walk, run, jump, hurt, attack, item, stand }
         public PlayerState current_state = PlayerState.stand;
+        public Vector2 location = new Vector2(400, 200);
         
 
 
@@ -47,8 +48,6 @@ namespace LF2Game
 
     public void Update()
     {
-        
-        
         timer++;
         if (timer % 8 == 0)
         {

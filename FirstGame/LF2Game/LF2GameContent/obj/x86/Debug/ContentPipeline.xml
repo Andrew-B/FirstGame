@@ -29,22 +29,40 @@
       <Time>2012-10-06T14:51:40.7497635+10:00</Time>
     </Item>
     <Item>
-      <Source>Davis.png</Source>
-      <Name>Davis</Name>
+      <Source>Davis3.png</Source>
+      <Name>Davis3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis.xnb</Output>
-      <Time>2012-10-08T12:21:59.2746472+10:00</Time>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis3.xnb</Output>
+      <Time>2012-10-08T14:09:25.8413697+10:00</Time>
     </Item>
     <Item>
-      <Source>Davis2.png</Source>
-      <Name>Davis2</Name>
+      <Source>back1.bmp</Source>
+      <Name>back1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis2.xnb</Output>
-      <Time>2012-10-08T12:39:59.8344517+10:00</Time>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\back1.xnb</Output>
+      <Time>2012-10-08T15:01:20.5465206+10:00</Time>
+    </Item>
+    <Item>
+      <Source>g1.bmp</Source>
+      <Name>g1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\g1.xnb</Output>
+      <Time>2012-10-08T15:01:15.6512406+10:00</Time>
+    </Item>
+    <Item>
+      <Source>w1.bmp</Source>
+      <Name>w1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\w1.xnb</Output>
+      <Time>2012-10-08T15:20:03.8800714+10:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

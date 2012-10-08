@@ -1,5 +1,7 @@
 Content\julian_f.xnb
 Content\davis_0.xnb
 Content\Score.xnb
-Content\Davis.xnb
-Content\Davis2.xnb
+Content\Davis3.xnb
+Content\back1.xnb
+Content\g1.xnb
+Content\w1.xnb

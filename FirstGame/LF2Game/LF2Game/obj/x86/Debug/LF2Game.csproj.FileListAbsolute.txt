@@ -7,5 +7,7 @@ C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\LF2Game.pdb
 C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\obj\x86\Debug\LF2Game.exe
 C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\obj\x86\Debug\LF2Game.pdb
 C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Score.xnb
-C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis.xnb
-C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis2.xnb
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis3.xnb
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\back1.xnb
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\g1.xnb
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\w1.xnb

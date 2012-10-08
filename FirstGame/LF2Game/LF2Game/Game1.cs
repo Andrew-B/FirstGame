@@ -62,7 +62,7 @@ namespace LF2Game
             background_top = Content.Load<Texture2D>("back1");
             background_bottom = Content.Load<Texture2D>("w1");
             Texture2D texture = Content.Load<Texture2D>("Davis4");
-            Player1 = new LFSprite(texture, 4, 8);
+            Player1 = new LFSprite(texture, 6, 8);
             font = Content.Load<SpriteFont>("Score");
 
             // TODO: use this.Content to load your game content here
@@ -88,46 +88,63 @@ namespace LF2Game
 
             GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
             packet = gamePadState.PacketNumber;
-            //if (packet != previous_packet)
-            {
+                        
                 if (gamePadState.DPad.Left == ButtonState.Pressed)
                 {
-                    if (gamePadState.Triggers.Right > 0)
+                    if (gamePadState.Buttons.B == ButtonState.Pressed)
                     {
-                        Player1.current_state = LFSprite.PlayerState.run;
-                        Player1.location.X -= 3;
-
+                        Player1.current_state = LFSprite.PlayerState.defend;
                     }
                     else
                     {
-                        Player1.current_state = LFSprite.PlayerState.walk;
-                        
-                        Player1.location.X -= 1.5F;
-                    }
-                    Player1.facing = LFSprite.PlayerFace.left;
-                }
-                else if (gamePadState.DPad.Right == ButtonState.Pressed)
-                {
-                    if (gamePadState.Triggers.Right > 0)
-                    {
-                        Player1.current_state = LFSprite.PlayerState.run;
-                        Player1.location.X += 3;
+                        if (gamePadState.Triggers.Right > 0)
+                        {
+                            Player1.current_state = LFSprite.PlayerState.run;
+                            Player1.location.X -= 3;
 
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
+                            Player1.current_state = LFSprite.PlayerState.walk;
 
-                        Player1.current_state = LFSprite.PlayerState.walk;
-                        
-                        Player1.location.X += 1.5F;
+                            Player1.location.X -= 1.5F;
+                        }
                     }
+                        Player1.facing = LFSprite.PlayerFace.left;
+                    }
+                    else if (gamePadState.DPad.Right == ButtonState.Pressed)
+                    {
+                        if (gamePadState.Buttons.B == ButtonState.Pressed)
+                        {
+                            Player1.current_state = LFSprite.PlayerState.defend;
+                        }
+                        else
+                        {
+                            if (gamePadState.Triggers.Right > 0)
+                            {
+                                Player1.current_state = LFSprite.PlayerState.run;
+                                Player1.location.X += 3;
+
+                            }
+                            else
+                            {
+
+                                Player1.current_state = LFSprite.PlayerState.walk;
+
+                                Player1.location.X += 1.5F;
+                            }
+                        }
                     Player1.facing = LFSprite.PlayerFace.right;
+                }
+                else if (gamePadState.Buttons.B == ButtonState.Pressed)
+                {
+                    Player1.current_state = LFSprite.PlayerState.defend;
                 }
                 else
                 {
                     Player1.current_state = LFSprite.PlayerState.stand;
                 }
-            }
+            
             even_Older_Game_Pad_State = old_Game_Pad_State;
             old_Game_Pad_State = gamePadState;
             System.Console.WriteLine("The old state is Left is:" + old_Game_Pad_State.DPad.Right + "even older state is:" + even_Older_Game_Pad_State.DPad.Right);

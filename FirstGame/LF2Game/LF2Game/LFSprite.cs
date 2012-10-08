@@ -51,18 +51,10 @@ namespace LF2Game
         timer++;
         if (timer % 8 == 0)
         {
-            if (current_state == PlayerState.stand)
-            {
-                if (facing == PlayerFace.right)
-                    currentFrame = 0;
-                else
-                    currentFrame = 7;
-            }
-            else
+            if (current_state == PlayerState.run)
             {
                 if (facing == PlayerFace.right)
                 {
-                    row = 0;
                     if (oldState == PlayerFace.right)
                     {
 
@@ -73,26 +65,81 @@ namespace LF2Game
                     }
                     else
                     {
+                        oldState = PlayerFace.right;
                         currentFrame = 1;
                     }
-                    oldState = PlayerFace.right;
+                    row = 2;
                 }
-                else if (facing == PlayerFace.left)
+                else
                 {
-                    row = 1;
                     if (oldState == PlayerFace.left)
                     {
 
                         currentFrame++;
+                        System.Console.WriteLine("THe curent frame is:" + currentFrame + " and the facing is: " + facing.ToString());
                         if (currentFrame == totalFrames)
                             currentFrame = 0;
                     }
                     else
                     {
                         currentFrame = 1;
+                        oldState = PlayerFace.left;
                     }
-                    oldState = PlayerFace.left;
+                    row = 3;
+                    
+                }
+            }
+            else
+            {
+                if (current_state == PlayerState.stand)
+                {
+                    if (facing == PlayerFace.right)
+                    {
+                        currentFrame = 0;
+                        row = 0;
+                    }
+                    else
+                    {
+                        row = 1;
+                        currentFrame = 7;
+                    }
+                }
+                else
+                {
+                    if (facing == PlayerFace.right)
+                    {
+                        row = 0;
+                        if (oldState == PlayerFace.right)
+                        {
 
+                            currentFrame++;
+                            System.Console.WriteLine("THe curent frame is:" + currentFrame + " and the facing is: " + facing.ToString());
+                            if (currentFrame == totalFrames)
+                                currentFrame = 0;
+                        }
+                        else
+                        {
+                            currentFrame = 1;
+                        }
+                        oldState = PlayerFace.right;
+                    }
+                    else if (facing == PlayerFace.left)
+                    {
+                        row = 1;
+                        if (oldState == PlayerFace.left)
+                        {
+
+                            currentFrame++;
+                            if (currentFrame == totalFrames)
+                                currentFrame = 0;
+                        }
+                        else
+                        {
+                            currentFrame = 1;
+                        }
+                        oldState = PlayerFace.left;
+
+                    }
                 }
             }
 

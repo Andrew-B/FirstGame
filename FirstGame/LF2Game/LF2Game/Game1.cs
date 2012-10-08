@@ -62,7 +62,7 @@ namespace LF2Game
             background_top = Content.Load<Texture2D>("back1");
             background_bottom = Content.Load<Texture2D>("w1");
             Texture2D texture = Content.Load<Texture2D>("Davis3");
-            Player1 = new LFSprite(texture, 2, 8);
+            Player1 = new LFSprite(texture, 4, 8);
             font = Content.Load<SpriteFont>("Score");
 
             // TODO: use this.Content to load your game content here
@@ -92,7 +92,7 @@ namespace LF2Game
             {
                 if (gamePadState.DPad.Left == ButtonState.Pressed)
                 {
-                    if (even_Older_Game_Pad_State.DPad.Right == ButtonState.Pressed && old_Game_Pad_State.DPad.Right == ButtonState.Released)
+                    if (gamePadState.Triggers.Right > 0)
                     {
                         Player1.current_state = LFSprite.PlayerState.run;
                         Player1.location.X -= 3;
@@ -108,7 +108,7 @@ namespace LF2Game
                 }
                 else if (gamePadState.DPad.Right == ButtonState.Pressed)
                 {
-                    if (even_Older_Game_Pad_State.DPad.Right == ButtonState.Pressed && old_Game_Pad_State.DPad.Right == ButtonState.Released)
+                    if (gamePadState.Triggers.Right > 0)
                     {
                         Player1.current_state = LFSprite.PlayerState.run;
                         Player1.location.X += 3;

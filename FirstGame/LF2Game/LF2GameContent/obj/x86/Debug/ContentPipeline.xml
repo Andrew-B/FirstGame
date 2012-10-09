@@ -73,6 +73,15 @@
       <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis4.xnb</Output>
       <Time>2012-10-08T20:21:39.6250888+10:00</Time>
     </Item>
+    <Item>
+      <Source>Ground.png</Source>
+      <Name>Ground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Ground.xnb</Output>
+      <Time>2012-10-09T20:47:38.4500459+10:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

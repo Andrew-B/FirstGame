@@ -12,3 +12,4 @@ C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\bac
 C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\g1.xnb
 C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\w1.xnb
 C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Davis4.xnb
+C:\Users\Andrew\Desktop\Game\FirstGame\LF2Game\LF2Game\bin\x86\Debug\Content\Ground.xnb

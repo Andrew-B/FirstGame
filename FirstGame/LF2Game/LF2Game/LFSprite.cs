@@ -11,6 +11,7 @@ namespace LF2Game
     {
         public Texture2D Texture { get; set; }
         public Rectangle sourceRectangle {get; set;}
+        public Rectangle feetRectangle { get; set; }
         public Rectangle destinationRectangle {get; set;}
         public Boolean is_moving { get; set; }
         public int Rows { get; set; }
@@ -28,6 +29,7 @@ namespace LF2Game
         public enum PlayerState { walk, run, jump, hurt, attack, item, stand, defend }
         public PlayerState current_state = PlayerState.stand;
         public Vector2 location = new Vector2(400, 200);
+        
         
 
 

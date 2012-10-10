@@ -16,6 +16,7 @@ namespace LF2Game
         public Boolean is_moving { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
+        public int velocity_y = 0;
         private int currentFrame;
         private int totalFrames;
         private int timer = 0;
@@ -26,7 +27,7 @@ namespace LF2Game
         public enum PlayerFace { right, left };
         public PlayerFace facing = PlayerFace.right;
         public PlayerFace oldState = PlayerFace.right;
-        public enum PlayerState { walk, run, jump, hurt, attack, item, stand, defend }
+        public enum PlayerState { walk, run, jump, hurt, attack, item, stand, defend, falling, run_jump }
         public PlayerState current_state = PlayerState.stand;
         public Vector2 location = new Vector2(400, 200);
         

@@ -21,6 +21,8 @@ namespace LF2Game
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private Texture2D background,background_top,background_bottom,feet,ground;
+        private Rectangle groundRectangle = new Rectangle(0, 300, 800, 100);
+        private int distance_from_object = 74;
         private SpriteFont font;
         private int score = 0;
         private LFSprite Player1;
@@ -90,32 +92,75 @@ namespace LF2Game
 
             GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
             packet = gamePadState.PacketNumber;
-                        
-                if (gamePadState.DPad.Left == ButtonState.Pressed)
+            if (Player1.current_state == LFSprite.PlayerState.falling)
+            {
+                //code here to make fall happen until collision
+                if (Player1.location.Y + 1 <= (groundRectangle.Y - distance_from_object))
                 {
-                    if (gamePadState.Buttons.B == ButtonState.Pressed)
+                    Player1.location.Y += 2;
+                }
+                else
+                {
+                    Player1.current_state = LFSprite.PlayerState.stand;
+                }
+            }
+            else
+            {
+                if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y < 10)
+                {
+                    Player1.current_state = LFSprite.PlayerState.jump;
+                    Player1.velocity_y += 1;
+                    Player1.location.Y -= Player1.velocity_y;
+                }
+                else if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y >= 10)
+                {
+                    //code here
+                    //make player state to fall then create another if statement outside of this set
+                    Player1.current_state = LFSprite.PlayerState.falling;
+                }
+                else
+                {
+                    if (gamePadState.DPad.Left == ButtonState.Pressed)
                     {
-                        Player1.current_state = LFSprite.PlayerState.defend;
-                    }
-                    else
-                    {
-                        if (gamePadState.Triggers.Right > 0)
+                        if (gamePadState.Buttons.A == ButtonState.Pressed)
                         {
-                            Player1.current_state = LFSprite.PlayerState.run;
-                            Player1.location.X -= 3;
-
+                            Player1.current_state = LFSprite.PlayerState.jump;
+                            if (gamePadState.Triggers.Right > 0)
+                            {
+                                Player1.current_state = LFSprite.PlayerState.run_jump;
+                            }
+                        }
+                        if (gamePadState.Buttons.B == ButtonState.Pressed)
+                        {
+                            Player1.current_state = LFSprite.PlayerState.defend;
                         }
                         else
                         {
-                            Player1.current_state = LFSprite.PlayerState.walk;
+                            if (gamePadState.Triggers.Right > 0)
+                            {
+                                Player1.current_state = LFSprite.PlayerState.run;
+                                Player1.location.X -= 3;
 
-                            Player1.location.X -= 1.5F;
+                            }
+                            else
+                            {
+                                Player1.current_state = LFSprite.PlayerState.walk;
+
+                                Player1.location.X -= 1.5F;
+                            }
                         }
-                    }
                         Player1.facing = LFSprite.PlayerFace.left;
                     }
                     else if (gamePadState.DPad.Right == ButtonState.Pressed)
                     {
+                        if (gamePadState.Buttons.A == ButtonState.Pressed)
+                        {
+                            Player1.current_state = LFSprite.PlayerState.jump;
+                            if (gamePadState.Triggers.Right > 0)
+                            {
+                                Player1.current_state = LFSprite.PlayerState.run_jump;
+                            }
+                        }
                         if (gamePadState.Buttons.B == ButtonState.Pressed)
                         {
                             Player1.current_state = LFSprite.PlayerState.defend;
@@ -136,27 +181,35 @@ namespace LF2Game
                                 Player1.location.X += 1.5F;
                             }
                         }
-                    Player1.facing = LFSprite.PlayerFace.right;
-                }
-                else if (gamePadState.Buttons.B == ButtonState.Pressed)
-                {
-                    Player1.current_state = LFSprite.PlayerState.defend;
-                }
-                else
-                {
-                    Player1.current_state = LFSprite.PlayerState.stand;
-                }
+                        Player1.facing = LFSprite.PlayerFace.right;
+                    }
+                    else if (gamePadState.Buttons.B == ButtonState.Pressed)
+                    {
+                        Player1.current_state = LFSprite.PlayerState.defend;
+                    }
+                    else if (gamePadState.Buttons.A == ButtonState.Pressed)
+                    {
+                        Player1.current_state = LFSprite.PlayerState.jump;
+                        Player1.velocity_y += 2;
+                        Player1.location.Y -= Player1.velocity_y;
+                    }
+                    else
+                    {
+                        Player1.current_state = LFSprite.PlayerState.stand;
+                    }
+                }//end of if state = jump
+            }//end of if falling
                 Player1.feetRectangle = new Rectangle((int)Player1.location.X + 25,(int)Player1.location.Y + 50, 31, 26);
-            even_Older_Game_Pad_State = old_Game_Pad_State;
-            old_Game_Pad_State = gamePadState;
-            System.Console.WriteLine("The old state is Left is:" + old_Game_Pad_State.DPad.Right + "even older state is:" + even_Older_Game_Pad_State.DPad.Right);
-            previous_packet = packet;
+                even_Older_Game_Pad_State = old_Game_Pad_State;
+                old_Game_Pad_State = gamePadState;
+                System.Console.WriteLine("The old state is Left is:" + old_Game_Pad_State.DPad.Right + "even older state is:" + even_Older_Game_Pad_State.DPad.Right);
+                previous_packet = packet;
             
             
-            Player1.Update();
+                Player1.Update();
             
-            score += 1;
-            // Allows the game to exit
+                score += 1;
+                // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
@@ -178,7 +231,7 @@ namespace LF2Game
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
             spriteBatch.Draw(background_top, new Rectangle(10, 100, 800, 100), Color.White);
             spriteBatch.Draw(background_bottom, new Rectangle(0, 300, 800, 200), Color.Red);
-            spriteBatch.Draw(ground, new Rectangle(0, 300, 800, 100), Color.Red);
+            //spriteBatch.Draw(ground, groundRectangle, Color.Red);
             spriteBatch.Draw(feet, Player1.feetRectangle, Color.Red);
             spriteBatch.DrawString(font, "Score:" + score, new Vector2(100, 100), Color.White);
             spriteBatch.End();

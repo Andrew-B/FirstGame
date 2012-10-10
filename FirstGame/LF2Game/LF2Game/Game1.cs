@@ -20,7 +20,7 @@ namespace LF2Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        private Texture2D background,background_top,background_bottom,feet;
+        private Texture2D background,background_top,background_bottom,feet,ground;
         private SpriteFont font;
         private int score = 0;
         private LFSprite Player1;
@@ -62,6 +62,7 @@ namespace LF2Game
             background_top = Content.Load<Texture2D>("back1");
             background_bottom = Content.Load<Texture2D>("w1");
             feet = Content.Load <Texture2D>("Ground");
+            ground = Content.Load<Texture2D>("Ground");
             Texture2D texture = Content.Load<Texture2D>("Davis4");
             Player1 = new LFSprite(texture, 6, 8);
             font = Content.Load<SpriteFont>("Score");
@@ -145,7 +146,7 @@ namespace LF2Game
                 {
                     Player1.current_state = LFSprite.PlayerState.stand;
                 }
-                Player1.feetRectangle = new Rectangle((int)Player1.location.X + 25,(int)Player1.location.Y + 50, 31, 28);
+                Player1.feetRectangle = new Rectangle((int)Player1.location.X + 25,(int)Player1.location.Y + 50, 31, 26);
             even_Older_Game_Pad_State = old_Game_Pad_State;
             old_Game_Pad_State = gamePadState;
             System.Console.WriteLine("The old state is Left is:" + old_Game_Pad_State.DPad.Right + "even older state is:" + even_Older_Game_Pad_State.DPad.Right);
@@ -177,8 +178,9 @@ namespace LF2Game
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
             spriteBatch.Draw(background_top, new Rectangle(10, 100, 800, 100), Color.White);
             spriteBatch.Draw(background_bottom, new Rectangle(0, 300, 800, 200), Color.Red);
+            spriteBatch.Draw(ground, new Rectangle(0, 300, 800, 100), Color.Red);
             spriteBatch.Draw(feet, Player1.feetRectangle, Color.Red);
-            spriteBatch.DrawString(font, "Score:" + score, new Vector2(100, 100), Color.Red);
+            spriteBatch.DrawString(font, "Score:" + score, new Vector2(100, 100), Color.White);
             spriteBatch.End();
             Player1.Draw(spriteBatch, Player1.location);
 

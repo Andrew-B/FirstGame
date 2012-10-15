@@ -27,7 +27,7 @@ namespace LF2Game
         public enum PlayerFace { right, left };
         public PlayerFace facing = PlayerFace.right;
         public PlayerFace oldState = PlayerFace.right;
-        public enum PlayerState { walk, run, jump, hurt, attack, item, stand, defend, falling, run_jump }
+        public enum PlayerState { walk, run, jump, hurt, attack, item, stand, defend, falling, run_jump,walk_jump }
         public PlayerState current_state = PlayerState.stand;
         public Vector2 location = new Vector2(400, 200);
         
@@ -54,80 +54,64 @@ namespace LF2Game
         timer++;
         if (timer % 8 == 0)
         {
-            if (current_state == PlayerState.defend)
+            if (current_state == PlayerState.jump || current_state == PlayerState.falling)
             {
                 if (facing == PlayerFace.right)
                 {
-                    row = 4;
-                    currentFrame = 1;
-                    oldState = PlayerFace.right;
+                    if (oldState == PlayerFace.right)
+                    {
+                        currentFrame++;
+                        if (currentFrame == totalFrames)
+                            currentFrame = 0;
+                    }
+                    else
+                    {
+                        oldState = PlayerFace.right;
+                        currentFrame = 0;
+                    }
+                    row = 6;
                 }
                 else
                 {
-                    row = 5;
-                    currentFrame = 1;
-                    oldState = PlayerFace.left;
+                    if (oldState == PlayerFace.left)
+                    {
+                        currentFrame++;
+                        if (currentFrame == totalFrames)
+                            currentFrame = 0;
+                    }
+                    else
+                    {
+                        oldState = PlayerFace.left;
+                        currentFrame = 1;
+                    }
+                    row = 7;
                 }
-
             }
             else
             {
-                if (current_state == PlayerState.run)
+
+                if (current_state == PlayerState.defend)
                 {
                     if (facing == PlayerFace.right)
                     {
-                        if (oldState == PlayerFace.right)
-                        {
-
-                            currentFrame++;
-                            if (currentFrame == totalFrames)
-                                currentFrame = 0;
-                        }
-                        else
-                        {
-                            oldState = PlayerFace.right;
-                            currentFrame = 1;
-                        }
-                        row = 2;
+                        row = 4;
+                        currentFrame = 1;
+                        oldState = PlayerFace.right;
                     }
                     else
                     {
-                        if (oldState == PlayerFace.left)
-                        {
-
-                            currentFrame++;
-                            if (currentFrame == totalFrames)
-                                currentFrame = 0;
-                        }
-                        else
-                        {
-                            currentFrame = 1;
-                            oldState = PlayerFace.left;
-                        }
-                        row = 3;
-
+                        row = 5;
+                        currentFrame = 1;
+                        oldState = PlayerFace.left;
                     }
+
                 }
                 else
                 {
-                    if (current_state == PlayerState.stand)
+                    if (current_state == PlayerState.run)
                     {
                         if (facing == PlayerFace.right)
                         {
-                            currentFrame = 0;
-                            row = 0;
-                        }
-                        else
-                        {
-                            row = 1;
-                            currentFrame = 7;
-                        }
-                    }
-                    else
-                    {
-                        if (facing == PlayerFace.right)
-                        {
-                            row = 0;
                             if (oldState == PlayerFace.right)
                             {
 
@@ -137,13 +121,13 @@ namespace LF2Game
                             }
                             else
                             {
+                                oldState = PlayerFace.right;
                                 currentFrame = 1;
                             }
-                            oldState = PlayerFace.right;
+                            row = 2;
                         }
-                        else if (facing == PlayerFace.left)
+                        else
                         {
-                            row = 1;
                             if (oldState == PlayerFace.left)
                             {
 
@@ -154,9 +138,62 @@ namespace LF2Game
                             else
                             {
                                 currentFrame = 1;
+                                oldState = PlayerFace.left;
                             }
-                            oldState = PlayerFace.left;
+                            row = 3;
 
+                        }
+                    }
+                    else
+                    {
+                        if (current_state == PlayerState.stand)
+                        {
+                            if (facing == PlayerFace.right)
+                            {
+                                currentFrame = 0;
+                                row = 0;
+                            }
+                            else
+                            {
+                                row = 1;
+                                currentFrame = 1;
+                            }
+                        }
+                        else
+                        {
+                            if (facing == PlayerFace.right)
+                            {
+                                row = 0;
+                                if (oldState == PlayerFace.right)
+                                {
+
+                                    currentFrame++;
+                                    if (currentFrame == totalFrames)
+                                        currentFrame = 0;
+                                }
+                                else
+                                {
+                                    currentFrame = 1;
+                                }
+                                oldState = PlayerFace.right;
+                            }
+                            else if (facing == PlayerFace.left)
+                            {
+                                row = 1;
+                                if (oldState == PlayerFace.left)
+                                {
+
+                                    currentFrame++;
+                                    if (currentFrame == totalFrames)
+                                        currentFrame = 0;
+                                }
+                                else
+                                {
+                                    currentFrame = 1;
+                                }
+                                oldState = PlayerFace.left;
+
+                            }
                         }
                     }
                 }

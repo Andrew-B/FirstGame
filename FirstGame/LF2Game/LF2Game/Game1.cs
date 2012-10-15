@@ -65,8 +65,8 @@ namespace LF2Game
             background_bottom = Content.Load<Texture2D>("w1");
             feet = Content.Load <Texture2D>("Ground");
             ground = Content.Load<Texture2D>("Ground");
-            Texture2D texture = Content.Load<Texture2D>("Davis4");
-            Player1 = new LFSprite(texture, 6, 8);
+            Texture2D texture = Content.Load<Texture2D>("Davis5");
+            Player1 = new LFSprite(texture, 8, 8);
             font = Content.Load<SpriteFont>("Score");
 
             // TODO: use this.Content to load your game content here
@@ -97,7 +97,7 @@ namespace LF2Game
                 //code here to make fall happen until collision
                 if (Player1.location.Y + 1 <= (groundRectangle.Y - distance_from_object))
                 {
-                    Player1.location.Y += 2;
+                    Player1.location.Y += 3;
                 }
                 else
                 {
@@ -106,7 +106,7 @@ namespace LF2Game
             }
             else
             {
-                if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y < 10)
+                if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y < 14)
                 {
                     Player1.current_state = LFSprite.PlayerState.jump;
                     Player1.velocity_y += 1;
@@ -125,7 +125,7 @@ namespace LF2Game
                     {
                         if (gamePadState.Buttons.A == ButtonState.Pressed)
                         {
-                            Player1.current_state = LFSprite.PlayerState.jump;
+                            Player1.current_state = LFSprite.PlayerState.walk_jump;
                             if (gamePadState.Triggers.Right > 0)
                             {
                                 Player1.current_state = LFSprite.PlayerState.run_jump;
@@ -156,7 +156,7 @@ namespace LF2Game
                     {
                         if (gamePadState.Buttons.A == ButtonState.Pressed)
                         {
-                            Player1.current_state = LFSprite.PlayerState.jump;
+                            Player1.current_state = LFSprite.PlayerState.walk_jump;
                             if (gamePadState.Triggers.Right > 0)
                             {
                                 Player1.current_state = LFSprite.PlayerState.run_jump;
@@ -233,7 +233,7 @@ namespace LF2Game
             spriteBatch.Draw(background_top, new Rectangle(10, 100, 800, 100), Color.White);
             spriteBatch.Draw(background_bottom, new Rectangle(0, 300, 800, 200), Color.Red);
             //spriteBatch.Draw(ground, groundRectangle, Color.Red);
-            spriteBatch.Draw(feet, Player1.feetRectangle, Color.Red);
+            //spriteBatch.Draw(feet, Player1.feetRectangle, Color.Red);
             spriteBatch.DrawString(font, "Score:" + score, new Vector2(100, 100), Color.White);
             spriteBatch.End();
             Player1.Draw(spriteBatch, Player1.location);

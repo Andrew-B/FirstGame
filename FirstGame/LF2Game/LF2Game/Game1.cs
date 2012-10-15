@@ -106,13 +106,13 @@ namespace LF2Game
             }
             else
             {
-                if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y < 12)
+                if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y < 10)
                 {
                     Player1.current_state = LFSprite.PlayerState.jump;
                     Player1.velocity_y += 1;
                     Player1.location.Y -= Player1.velocity_y;
                 }
-                else if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y >= 12)
+                else if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y >= 8)
                 {
                     //code here
                     //make player state to fall then create another if statement outside of this set

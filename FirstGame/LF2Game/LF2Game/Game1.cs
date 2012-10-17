@@ -98,6 +98,14 @@ namespace LF2Game
                 if (Player1.location.Y + 1 <= (groundRectangle.Y - distance_from_object))
                 {
                     Player1.location.Y += 3;
+                    if (Player1.facing == LFSprite.PlayerFace.right && gamePadState.DPad.Right == ButtonState.Pressed)
+                    {
+                        Player1.location.X += 3;
+                    }
+                    else if (Player1.facing == LFSprite.PlayerFace.left && gamePadState.DPad.Left == ButtonState.Pressed)
+                    {
+                        Player1.location.X -= 3;
+                    }
                 }
                 else
                 {
@@ -106,13 +114,30 @@ namespace LF2Game
             }
             else //state is not falling
             {
-                if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y < 14)
+                if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.walk_jump|| Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y < 14)
                 {
-                    Player1.current_state = LFSprite.PlayerState.jump;
-                    Player1.velocity_y += 1;
-                    Player1.location.Y -= Player1.velocity_y;
+                    if (Player1.current_state == LFSprite.PlayerState.run_jump || Player1.current_state == LFSprite.PlayerState.walk_jump)
+                    {
+                        Player1.current_state = LFSprite.PlayerState.run_jump;
+                        Player1.velocity_y += 1;
+                        Player1.location.Y -= Player1.velocity_y;
+                        if (Player1.facing == LFSprite.PlayerFace.right)
+                        {
+                            Player1.location.X += Player1.velocity_y;
+                        }
+                        else
+                        {
+                            Player1.location.X -= Player1.velocity_y;
+                        }
+                    }
+                    else
+                    {
+                        Player1.current_state = LFSprite.PlayerState.jump;
+                        Player1.velocity_y += 1;
+                        Player1.location.Y -= Player1.velocity_y;
+                    }
                 }
-                else if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y >= 8)
+                else if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.walk_jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y >= 8)
                 {
                     //code here
                     //make player state to fall then create another if statement outside of this set

@@ -104,7 +104,7 @@ namespace LF2Game
                     Player1.current_state = LFSprite.PlayerState.stand;
                 }
             }
-            else
+            else //state is not falling
             {
                 if ((Player1.current_state == LFSprite.PlayerState.jump || Player1.current_state == LFSprite.PlayerState.run_jump) && Player1.velocity_y < 14)
                 {
@@ -131,23 +131,26 @@ namespace LF2Game
                                 Player1.current_state = LFSprite.PlayerState.run_jump;
                             }
                         }
-                        if (gamePadState.Buttons.B == ButtonState.Pressed)
-                        {
-                            Player1.current_state = LFSprite.PlayerState.defend;
-                        }
                         else
                         {
-                            if (gamePadState.Triggers.Right > 0)
+                            if (gamePadState.Buttons.B == ButtonState.Pressed)
                             {
-                                Player1.current_state = LFSprite.PlayerState.run;
-                                Player1.location.X -= 3;
-
+                                Player1.current_state = LFSprite.PlayerState.defend;
                             }
                             else
                             {
-                                Player1.current_state = LFSprite.PlayerState.walk;
+                                if (gamePadState.Triggers.Right > 0)
+                                {
+                                    Player1.current_state = LFSprite.PlayerState.run;
+                                    Player1.location.X -= 3;
 
-                                Player1.location.X -= 1.5F;
+                                }
+                                else
+                                {
+                                    Player1.current_state = LFSprite.PlayerState.walk;
+
+                                    Player1.location.X -= 1.5F;
+                                }
                             }
                         }
                         Player1.facing = LFSprite.PlayerFace.left;
@@ -162,24 +165,27 @@ namespace LF2Game
                                 Player1.current_state = LFSprite.PlayerState.run_jump;
                             }
                         }
-                        if (gamePadState.Buttons.B == ButtonState.Pressed)
-                        {
-                            Player1.current_state = LFSprite.PlayerState.defend;
-                        }
                         else
                         {
-                            if (gamePadState.Triggers.Right > 0)
+                            if (gamePadState.Buttons.B == ButtonState.Pressed)
                             {
-                                Player1.current_state = LFSprite.PlayerState.run;
-                                Player1.location.X += 3;
-
+                                Player1.current_state = LFSprite.PlayerState.defend;
                             }
                             else
                             {
+                                if (gamePadState.Triggers.Right > 0)
+                                {
+                                    Player1.current_state = LFSprite.PlayerState.run;
+                                    Player1.location.X += 3;
 
-                                Player1.current_state = LFSprite.PlayerState.walk;
+                                }
+                                else
+                                {
 
-                                Player1.location.X += 1.5F;
+                                    Player1.current_state = LFSprite.PlayerState.walk;
+
+                                    Player1.location.X += 1.5F;
+                                }
                             }
                         }
                         Player1.facing = LFSprite.PlayerFace.right;

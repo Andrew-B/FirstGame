@@ -27,7 +27,7 @@ namespace LF2Game
         public enum PlayerFace { right, left };
         public PlayerFace facing = PlayerFace.right;
         public PlayerFace oldState = PlayerFace.right;
-        public enum PlayerState { walk, run, jump, hurt, attack, item, stand, defend, falling, run_jump,walk_jump,walk_attack, run_attack }
+        public enum PlayerState { walk, run, jump, hurt, attack, item, stand, defend, falling, run_jump,walk_jump, run_attack }
         public PlayerState current_state = PlayerState.stand;
         public Vector2 location = new Vector2(400, 200);
         

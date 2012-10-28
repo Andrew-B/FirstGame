@@ -260,6 +260,10 @@ namespace LF2Game
                         Player1.velocity_y += 2;
                         Player1.location.Y -= Player1.velocity_y;
                     }
+                    else if (gamePadState.Buttons.X == ButtonState.Pressed)
+                    {
+                        Player1.current_state = LFSprite.PlayerState.attack;
+                    }
                     else
                     {
                         Player1.current_state = LFSprite.PlayerState.stand;
@@ -269,12 +273,9 @@ namespace LF2Game
                 Player1.feetRectangle = new Rectangle((int)Player1.location.X + 25,(int)Player1.location.Y + 50, 31, 26);
                 even_Older_Game_Pad_State = old_Game_Pad_State;
                 old_Game_Pad_State = gamePadState;
-                System.Console.WriteLine("The old state is Left is:" + old_Game_Pad_State.DPad.Right + "even older state is:" + even_Older_Game_Pad_State.DPad.Right);
+                //System.Console.WriteLine("The old state is Left is:" + old_Game_Pad_State.DPad.Right + "even older state is:" + even_Older_Game_Pad_State.DPad.Right);
                 previous_packet = packet;
-            
-            
                 Player1.Update();
-            
                 score += 1;
                 // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)

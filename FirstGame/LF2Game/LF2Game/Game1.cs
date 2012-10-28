@@ -98,13 +98,30 @@ namespace LF2Game
                 if (Player1.location.Y + 1 <= (groundRectangle.Y - distance_from_object))
                 {
                     Player1.location.Y += 3;
-                    if (Player1.facing == LFSprite.PlayerFace.right && gamePadState.DPad.Right == ButtonState.Pressed)
+                    if (Player1.facing == LFSprite.PlayerFace.right)
                     {
-                        Player1.location.X += 3;
+                        if (gamePadState.DPad.Right == ButtonState.Pressed)
+                        {
+                            Player1.location.X += 2;
+                        }
+                        else if (gamePadState.DPad.Left == ButtonState.Pressed)
+                        {
+                            Player1.facing = LFSprite.PlayerFace.left;
+                            Player1.location.X -= 2;
+                        }
                     }
-                    else if (Player1.facing == LFSprite.PlayerFace.left && gamePadState.DPad.Left == ButtonState.Pressed)
+                    else if (Player1.facing == LFSprite.PlayerFace.left )
                     {
-                        Player1.location.X -= 3;
+                        if (gamePadState.DPad.Left == ButtonState.Pressed)
+                        {
+                            Player1.location.X -= 2;
+                        }
+                        else if (gamePadState.DPad.Right == ButtonState.Pressed)
+                        {
+                            Player1.facing = LFSprite.PlayerFace.right;
+                            Player1.location.X += 2;
+                        }
+
                     }
                 }
                 else
@@ -123,14 +140,14 @@ namespace LF2Game
                         Player1.location.Y -= Player1.velocity_y;
                         if (Player1.facing == LFSprite.PlayerFace.right)
                         {
-                            Player1.location.X += Player1.velocity_y;
+                            Player1.location.X += Player1.velocity_y * Player1.velocity_y / 19;
                         }
-                        else
+                        else //Player is facing left and running + jumping or walking + jumping
                         {
-                            Player1.location.X -= Player1.velocity_y;
+                            Player1.location.X -= Player1.velocity_y * Player1.velocity_y / 19;
                         }
                     }
-                    else
+                    else //The player is nor running/walking + jumping but has jumped
                     {
                         Player1.current_state = LFSprite.PlayerState.jump;
                         Player1.velocity_y += 1;
@@ -156,21 +173,30 @@ namespace LF2Game
                                 Player1.current_state = LFSprite.PlayerState.run_jump;
                             }
                         }
-                        else
+                        else// A was not pressed
                         {
                             if (gamePadState.Buttons.B == ButtonState.Pressed)
                             {
                                 Player1.current_state = LFSprite.PlayerState.defend;
                             }
-                            else
+                            else // B was not pressed
                             {
                                 if (gamePadState.Triggers.Right > 0)
                                 {
                                     Player1.current_state = LFSprite.PlayerState.run;
                                     Player1.location.X -= 3;
+                                    if (gamePadState.Buttons.X == ButtonState.Pressed)
+                                    {
+                                        //code here for running_attack state
+                                        Player1.current_state = LFSprite.PlayerState.run_attack;
+                                    }
 
                                 }
-                                else
+                                else if (gamePadState.Buttons.X == ButtonState.Pressed)
+                                {
+                                    Player1.current_state = LFSprite.PlayerState.attack;
+                                }
+                                else // just walking
                                 {
                                     Player1.current_state = LFSprite.PlayerState.walk;
 
@@ -190,21 +216,30 @@ namespace LF2Game
                                 Player1.current_state = LFSprite.PlayerState.run_jump;
                             }
                         }
-                        else
+                        else // A was not pressed
                         {
                             if (gamePadState.Buttons.B == ButtonState.Pressed)
                             {
                                 Player1.current_state = LFSprite.PlayerState.defend;
                             }
-                            else
+                            else // B was not pressed
                             {
                                 if (gamePadState.Triggers.Right > 0)
                                 {
                                     Player1.current_state = LFSprite.PlayerState.run;
                                     Player1.location.X += 3;
+                                    if (gamePadState.Buttons.X == ButtonState.Pressed)
+                                    {
+                                        //code here for running_attack state
+                                        Player1.current_state = LFSprite.PlayerState.run_attack;
+                                    }
 
                                 }
-                                else
+                                else if (gamePadState.Buttons.X == ButtonState.Pressed)
+                                {
+                                    Player1.current_state = LFSprite.PlayerState.attack;
+                                }
+                                else // just walking
                                 {
 
                                     Player1.current_state = LFSprite.PlayerState.walk;
